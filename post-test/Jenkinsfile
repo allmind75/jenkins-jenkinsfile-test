@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage("test") {
+            steps {
+                echo "========test========"
+                sh 'java --version'
+            }
+        }
+    }
+    post {
+        always {
+            echo "========always========"
+        }
+        success {
+            echo "========pipeline executed successfully ========"
+        }
+        failure {
+            echo "========pipeline execution failed========"
+        }
+        unstable {
+            echo "========pipeline execution unstable========"
+        }
+        changed {
+            echo "========pipeline execution changed========"
+        }
+    }
+}
